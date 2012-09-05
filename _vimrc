@@ -27,9 +27,8 @@ Bundle 'garbas/vim-snipmate'
 
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/vim-statline'
 Bundle 'Visual-Mark'
-
+Bundle 'c.vim'
 "colorscheme
 Bundle 'desert-warm-256'
 Bundle 'gmarik/ingretu'
