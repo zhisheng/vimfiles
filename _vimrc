@@ -1,7 +1,9 @@
+
+
+set showcmd
 set nu
 set ruler
 set nocompatible
-set showcmd
 set foldmethod=syntax
 set completeopt=longest,menu
 filetype off "required
@@ -9,6 +11,7 @@ let mapleader=";"
 syntax on
 filetype plugin indent on
 filetype indent on 
+
 
 
 set rtp+=~/.vim/bundle/vundle
@@ -27,12 +30,12 @@ Bundle 'garbas/vim-snipmate'
 
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/vim-statline'
 Bundle 'Visual-Mark'
 Bundle 'c.vim'
 "colorscheme
 Bundle 'desert-warm-256'
 Bundle 'gmarik/ingretu'
-colorscheme ingretu
 
 " Vim-Latex
 Bundle 'hujunfeng/Vim-Latex'
@@ -45,6 +48,7 @@ Bundle 'winmanager'
 Bundle 'mbbill/echofunc'
 Bundle 'ShowMarks'
 Bundle 'c9s/bufexplorer'
+Bundle  'majutsushi/tagbar'
 
 """"""""""""""""""""""
 " Tglist配置
@@ -64,7 +68,10 @@ let Tlist_Show_Menu=1
  
 "设置界面分割
 let g:winManagerWidth = 30
-let g:winManagerWindowLayout='NERDTree|TagList|BufExplorer'
+let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'
+map <c-w><c-b> :BottomExplorerWindow<cr>
+map <c-w><c-f> :FirstExplorerWindow<cr>
+
 "定义打开关闭winmanager按键
 nmap <silent> <F8> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
 
@@ -90,3 +97,24 @@ inoremap <Leader>t <C-x><C-o>
 nnoremap <silent> <F3> :Grep<CR>
 nnoremap <silent> <F12> :A<CR>
 
+
+
+
+" 在图形界面和终端的配色方案、字体
+if has("gui_running")
+    set columns=78 lines=18    "设置gui默认界面大小
+    if has("unix")
+    	colorscheme ingretu
+        set guifont=Monospace\ 13
+    elseif has("win32")
+        colorscheme asu1dark
+        set guifont=Courier:h12:cANSI
+        set guifontwide=NSimSun:h12 " guifontwide只有在encoding=utf-8时才生效
+    endif
+else
+    if has("unix")
+        colorscheme  desert
+    elseif has("win32")
+        colorscheme ir_black
+    endif
+endif
